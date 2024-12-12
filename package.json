@@ -12,14 +12,20 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@types/dateformat": "^5.0.2",
+    "cors": "^2.8.5",
     "express": "^4.21.2",
     "yahoo-finance2": "^2.13.2"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
     "@types/node": "^22.10.1",
     "concurrently": "^9.1.0",
+    "dateformat": "^4.6.3",
+    "i": "^0.3.7",
     "nodemon": "^3.1.7",
+    "npm": "^10.9.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.2"
   }
