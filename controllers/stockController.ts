@@ -15,7 +15,6 @@ const getStockInfo = async (req: Request, res: Response) => {
 
 const searchStock = async (req: Request, res: Response) => {
   const { stockSymbol } = req.params;
-
   try {
     const result = await yahooFinance.search(stockSymbol);
     res.status(200).json(result);
@@ -51,7 +50,7 @@ const getSingleStockInfo = async (req: Request, res: Response) => {
       formattedDate = dateFormat(now, "yyyy-mm-dd");
       break;
     case "5D":
-      formattedDate = dateFormat(now.setDate(now.getDate() - 5), "yyyy-mm-dd");
+      formattedDate = dateFormat(now.setDate(now.getDate() - 7), "yyyy-mm-dd");
       intervalPeriod = "1d";
       break;
 
@@ -60,22 +59,22 @@ const getSingleStockInfo = async (req: Request, res: Response) => {
         now.setMonth(now.getMonth() - 1),
         "yyyy-mm-dd"
       );
-      intervalPeriod = "5d";
+      intervalPeriod = "1d";
       break;
     case "6M":
       formattedDate = dateFormat(
-        now.setMonth(now.getMonth() - 6),
+        now.setMonth(now.getMonth() - 5),
         "yyyy-mm-dd"
       );
-      intervalPeriod = "1mo";
+      intervalPeriod = "1wk";
       break;
 
     case "YTD":
       formattedDate = dateFormat(
-        now.setMonth(now.getMonth() - 6),
+        new Date(now.getFullYear(), 0, 1),
         "yyyy-mm-dd"
       );
-      intervalPeriod = "1mo";
+      intervalPeriod = "1wk";
       break;
 
     case "1Y":
@@ -83,7 +82,7 @@ const getSingleStockInfo = async (req: Request, res: Response) => {
         now.setFullYear(now.getFullYear() - 1),
         "yyyy-mm-dd"
       );
-      intervalPeriod = "1mo";
+      intervalPeriod = "1wk";
       break;
 
     case "5Y":
